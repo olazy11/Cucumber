@@ -24,7 +24,7 @@ import java.util.List;
 public class CommonMethods extends PageInitializer {
 
     public static WebDriver driver;
-    public static void  openBrowserAndLaunchApplication (){
+    public static void openBrowserAndLaunchApplication (){
 
         ConfigReader.readProperties();
 
