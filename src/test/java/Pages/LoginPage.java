@@ -7,25 +7,33 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends CommonMethods {
-    //page factory model
 
-    @FindBy(id="txtUsername")
-    public WebElement usernameTextBox;
+    public LoginPage()
 
-    @FindBy(id="txtPassword")
-    public WebElement passwordTextBox;
-
-    @FindBy(id="btnLogin")
-    public WebElement loginBtn;
-    @FindBy(id="welcome")
-    public WebElement welcomeIcon;
-
-    @FindBy(xpath ="//a[text()='Logout']" )
-    public WebElement logoutLink;
-
-    public LoginPage()//constructor-initializes the webelements of the current page
     {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this); // Initializing the webElements of the current page
 
     }
+
+
+    @FindBy(id = "txtUsername")
+    public WebElement usernameTextBox;
+
+
+    @FindBy(id = "txtPassword")
+    public WebElement passwordTextBox;
+
+    @FindBy(id = "btnLogin")
+    public WebElement loginBtn;
+    // Page Factory Model
+
+    @FindBy(id = "welcome")
+    public WebElement welcomeIcon;
+
+    @FindBy(xpath = "//a[text()='Logout']")
+    public WebElement logoutLink;
+
+
+
+
 }

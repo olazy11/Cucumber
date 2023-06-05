@@ -31,7 +31,8 @@ Feature: Login Functionalities
       | ADMIN    | Hum@nhrm123 |
       | Jason    | Hum@nhrm123 |
 
-#When you want to use parameterization and data driven testing we use Scenario Outline, always used along with the keyword 'Examples'
+#When you want to use parameterization and data driven testing we use Scenario Outline,
+# always used along with the keyword 'Examples'
 
 
 #DataTable - 1 time browser opens and 1 time close (because of Java code)

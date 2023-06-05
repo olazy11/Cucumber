@@ -1,6 +1,5 @@
 package Pages;
 
-import StepDefinitions.AddEmployee;
 import Utils.CommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,26 +7,30 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddEmployeePage extends CommonMethods {
-    @FindBy(id ="menu_pim_viewPimModule")
-    public WebElement pimTub;
 
-    @FindBy(id ="menu_pim_addEmployee")
-    public WebElement addEmpBtn ;
+    @FindBy(id = "menu_pim_viewPimModule")
+    public WebElement pimTab;
 
-    @FindBy(id ="firstName")
-    public WebElement firstNameTextBox ;
+    @FindBy(id = "menu_pim_addEmployee")
+    public WebElement eddEmpBtn;
 
-@FindBy(id="middleName")
-    public WebElement middleNameTextBox ;
-@FindBy(id ="lastName")
-public WebElement lastNameTextBox;
+    @FindBy(id = "firstName")
+    public WebElement firstNameTextBox;
 
-@FindBy(id="btnSave")
-public WebElement saveBtn;
+    @FindBy(id = "middleName")
+    public WebElement middleNameTextBox;
 
-public AddEmployeePage(){
-    PageFactory.initElements(driver,this);
-}
+    @FindBy(id = "lastName")
+    public WebElement lastNameTextBox;
 
+    @FindBy(id = "btnSave")
+    public WebElement saveBtn;
+
+    @FindBy(id = "employeeId")
+    public WebElement empIdLocator;
+
+    public AddEmployeePage() {
+        PageFactory.initElements(driver, this);
+    }
 
 }

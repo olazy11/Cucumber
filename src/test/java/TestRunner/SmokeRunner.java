@@ -6,12 +6,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src\\test\\resources\\Features",
+        features = "src/test/resources/Features",
         glue = "StepDefinitions",
         dryRun = false,
-        tags = "@testcase2",
+        tags = "@database",
         plugin =  {"pretty","html:target/Cucumber.html","json:target/Cucumber.json","rerun:target/failed.txt" }//makes console more readable
-       )
+)
 //feature package path(if add login.feature -only to this one ; glue - path to StepDef package;
 //feature = where Guirkin files are located. glue = code; dryRun true = will check for which test the code is not written without executing all of the tests
 //if you want ot run testcases - dryRun = false

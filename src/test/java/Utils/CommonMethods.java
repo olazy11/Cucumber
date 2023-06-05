@@ -2,11 +2,13 @@ package Utils;
 
 import StepDefinitions.PageInitializer;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -23,29 +25,50 @@ public class CommonMethods extends PageInitializer {
 
     public static WebDriver driver;
     public static void  openBrowserAndLaunchApplication (){
+
         ConfigReader.readProperties();
 
         String browserType = ConfigReader.getPropertyValue("browserType");
         switch (browserType) {
             case "Chrome":
-                driver = new ChromeDriver();
+                ChromeOptions ops = new ChromeOptions();
+                ops.addArguments("--no-sandbox");
+                ops.addArguments("--remote-allow-origins=*");
+                if(ConfigReader.getPropertyValue("Headless").equals("true")){
+                    ops.addArguments("--headless=new");
+                }
+                driver = new ChromeDriver(ops);
                 break;
+
             case "Firefox":
                 driver = new FirefoxDriver();
                 break;
+
             case "IE":
                 driver = new InternetExplorerDriver();
                 break;
+
             default:
                 driver = new EdgeDriver();
                 break;
+
         }
+
+
+
         driver.manage().window().maximize();
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.WAIT_TIME));
         initializePageObjects();//this will initialize all the pages we have in our Page along with launching
+        //to configure the File and pattern it has
+        DOMConfigurator.configure("log4j.xml");
+        Log.startTestCase("This is the beginning of my test case");
+        Log.info("My test case is executing right now");
+        Log.warning("My test case might have some trivial issues");
     }
     public static void closeBrowser(){
+        Log.info("This test case is about to get completed");
+        Log.endTestCase("This test case is finished");
         driver.close();
     }
     public static void doClick(WebElement element){
@@ -53,7 +76,7 @@ public class CommonMethods extends PageInitializer {
     }
 
     public static void sendText(WebElement element, String text){
-        element.clear();
+       element.clear();
         element.sendKeys(text);
     }
 
